@@ -209,8 +209,6 @@ body {
   background: var(--cream);
   overflow: hidden;
   position: relative;
-  /* safe area padding for notched phones */
-  padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
 /* ── HEADER ── */
@@ -290,7 +288,14 @@ body {
 }
 
 /* ── SCREENS ── */
-.screen { display: none; flex-direction: column; flex: 1; overflow-y: auto; overflow-x: hidden; -webkit-overflow-scrolling: touch; min-height: 0; width: 100%; }
+.screen {
+  display: none;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+  min-height: 0;
+  width: 100%;
+}
 .screen.active { display: flex; }
 
 /* ── READ SCREEN ── */
@@ -483,7 +488,20 @@ body {
 }
 
 /* ── JOURNAL ── */
-.journal-area { padding: 16px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+.journal-area {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  min-height: 0;
+  height: 100%;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+}
 .journal-meta { display: flex; justify-content: space-between; align-items: center; }
 .journal-date {
   font-size: 11px;
@@ -640,7 +658,9 @@ body {
   overflow-x: hidden;
   flex: 1;
   min-height: 0;
+  height: 100%;
   -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
 }
 .defense-category {
   font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
@@ -706,7 +726,20 @@ body {
 .arg-verse { font-size: 12px; color: var(--cyan-dark); font-style: italic; font-family: Georgia, 'Times New Roman', serif; }
 
 /* ── SETTINGS ── */
-.settings-area { padding: 16px; display: flex; flex-direction: column; gap: 16px; overflow-y: auto; }
+.settings-area {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex: 1;
+  min-height: 0;
+  height: 100%;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+}
 .settings-section { background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--radius); overflow: hidden; }
 .settings-header {
   padding: 12px 16px; background: var(--surface2);
@@ -857,7 +890,17 @@ body {
 }
 
 /* Level containers */
-.read-level { display: none; flex-direction: column; flex: 1; min-height: 0; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+.read-level {
+  display: none;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
 .read-level.active { display: flex; }
 
 /* ── LEVEL 1: Topic cards ── */
